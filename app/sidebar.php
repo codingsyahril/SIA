@@ -36,7 +36,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -45,23 +45,23 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="index.php" class="nav-link active">
+                <a href="index.php?page=dashboard" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Dashboard </p>
                 </a>
               </li>
-              <!-- <li class="nav-item">
-                <a href="./index2.html" class="nav-link">
+              <li class="nav-item">
+                <a href="kas_masuk.php?page=kas-masuk" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v2</p>
+                  <p>Kas Masuk </p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
+                <!-- <a href="./index3.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v3</p>
+                  <p>Dashboard v3</p> -->
                 </a>
-              </li> -->
+              </li>
             </ul>
             <li class="nav-item">
             <a href="#" class="nav-link">
