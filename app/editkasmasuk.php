@@ -86,7 +86,7 @@ include '../conf/koneksi.php'; ?>
         </div>
         <div class="col-sm-"> 
         <button type="submit" href="edit/editkasmasuk.php" class="btn btn-info">Simpan</button>
-
+<!-- aslja -->
         </div>
               </div>
                     <!-- </div> -->

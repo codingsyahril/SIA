@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 04 Jun 2023 pada 08.03
+-- Waktu pembuatan: 05 Jun 2023 pada 20.48
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 7.4.29
 
@@ -32,6 +32,7 @@ CREATE TABLE `kas_masuk` (
   `penerima` varchar(100) DEFAULT NULL,
   `pemberi` varchar(100) DEFAULT NULL,
   `jumlah` int(255) DEFAULT NULL,
+  `rincian` varchar(100) NOT NULL,
   `tgl` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -39,9 +40,9 @@ CREATE TABLE `kas_masuk` (
 -- Dumping data untuk tabel `kas_masuk`
 --
 
-INSERT INTO `kas_masuk` (`id`, `penerima`, `pemberi`, `jumlah`, `tgl`) VALUES
-(5, 'zaki', 'rsbcm', 500000, '2023-05-07'),
-(7, 'jghhihu', 'gbjbnbh ', 1445, '2023-06-04');
+INSERT INTO `kas_masuk` (`id`, `penerima`, `pemberi`, `jumlah`, `rincian`, `tgl`) VALUES
+(9, 'dad', 'ayah', 12000, 'OPEN BO', '0000-00-00'),
+(11, 'daad', 'adad', 1231, 'ac', '2023-06-21');
 
 -- --------------------------------------------------------
 
@@ -88,7 +89,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `kas_masuk`
 --
 ALTER TABLE `kas_masuk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
