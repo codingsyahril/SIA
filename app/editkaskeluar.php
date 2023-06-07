@@ -1,6 +1,6 @@
 <?php 
-
-include 'header.php';
+include "header.php";
+include '../conf/koneksi.php';
 include "../conf/koneksi.php";
                     
 $id= $_GET['id'];
@@ -18,12 +18,12 @@ $m = mysqli_fetch_array($admin);
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>KAS MASUK</h1>
+            <h1>KAS KELUAR</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">KAS MASUK</li>
+              <li class="breadcrumb-item active">KAS KELUAR</li>
             </ol>
           </div>
         </div>
@@ -47,44 +47,38 @@ $m = mysqli_fetch_array($admin);
                       ?>
 <div class="card card-info">
   <div class="card-header">
-    <h3 class="card-title">Edit Data Kas Masuk</h3>
+    <h3 class="card-title">Edit Data Kas Keluar</h3>
   </div>
   <!-- /.card-header -->
   <!-- form start -->
-  <form class="form-horizontal" method ="GET" action="edit/updatekas_masuk.php">
+  <form class="form-horizontal" method ="GET" action="edit/updatekas_keluar.php">
     <div class="card-body">
       <div class="form-group row">
-        <label  class="col-sm-2 col-form-label">Penerima</label>
+        <label  class="col-sm-2 col-form-label">Penanggung Jawab</label>
         <div class="col-sm-10">
           <input type="text" class="form-control" name="penerima" id="penerima" placeholder="Penerima" value="<?php echo $m['penerima'];?>">
           <input type="text" class="form-control" name="id" placeholder="id" value="<?php echo $m['id'];?>" hidden>  
         </div>
       </div>
       <div class="form-group row">
-        <label  class="col-sm-2 col-form-label">Pemberi</label>
+        <label  class="col-sm-2 col-form-label">Rincian</label>
         <div class="col-sm-10">
-          <input  type="text" class="form-control" name="pemberi" placeholder="Pemberi" value=" <?php echo $m['pemberi'];?>">
+          <input  type="text" class="form-control" name="rincian" placeholder="Rincian" value=" <?php echo $m['rincian'];?>">
         </div>
       </div>
       <div class="form-group row">
         <label class="col-sm-2 col-form-label">Saldo</label>
         <div class="col-sm-10">
-          <input  type="text" class="form-control" name="jumlah" placeholder="Saldo" value="<?php echo $m['jumlah']; ?>">
-        </div>
-      </div>
-      <div class="form-group row">
-        <label class="col-sm-2 col-form-label">Rincian</label>
-        <div class="col-sm-10">
-          <input type="text" class="form-control" name = "rincian" placeholder="Rincian" value=" <?php echo $m['rincian'];?>">
+          <input  type="text" class="form-control" name="keluar" placeholder="Saldo" value="<?php echo $m['keluar']; ?>">
         </div>
       </div>
         <div class="form-group row">
         <label  class="col-sm-2 col-form-label">Tanggal</label>
         <div class="col-sm-3">
-          <input  type="date" name="tanggal" class="form-control"  placeholder="Tanggal" value=" <?php echo $m['tgl'];?>" >
+          <input  type="date" name="tanggal" class="form-control"  placeholder="Tanggal" value=" <?php echo $m['tgl'];?>">
         </div>
         <div class="col-sm-"> 
-        <button type="submit" href="edit/editkasmasuk.php" class="btn btn-info">Simpan</button>
+        <button type="submit" href="edit/editkaskeluar.php" class="btn btn-info">Simpan</button>
 <!-- aslja -->
         </div>
               </div>
@@ -170,7 +164,7 @@ $m = mysqli_fetch_array($admin);
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn bg-purple">Save changes</button>
+              <button type="submit" class="btn btn-primary">Save changes</button>
             </div>
           </div>
           

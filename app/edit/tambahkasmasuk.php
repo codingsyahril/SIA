@@ -1,7 +1,7 @@
 <?php 
 include "../../conf/koneksi.php";
 
-$id = $_POST['id']''
+$id = $_POST['id'];
 $penerima =  $_POST['penerima'];
 $pemberi =  $_POST['pemberi'];
 $jumlah =  $_POST['jumlah'];

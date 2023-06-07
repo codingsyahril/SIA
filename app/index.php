@@ -30,7 +30,35 @@ include "header.php";?>
     <!-- /.content-header -->
 
     <!-- Main content -->
-    <?php include "dashboard.php";?>
+
+    <?php 
+    if(isset($_GET['page'])){
+      if($_GET['page']=='dashboard'){
+      include "dashboard.php";
+    } elseif($_GET['page']=='kas-masuk'){
+      include "kas_masuk.php";
+    }elseif($_GET['page']=='editkasmasuk'){
+      include "editkasmasuk.php";
+    }else{
+      
+    }
+  }
+    ?>
+
+<?php 
+    if(isset($_GET['page'])){
+      if($_GET['page']=='dashboard'){
+      // include "dashboard.php";
+    } elseif($_GET['page']=='kas-keluar'){
+      include "kas_masuk.php";
+    }elseif($_GET['page']=='editkaskeluar'){
+      include "editkaskeluar.php";
+    }else{
+      
+    }
+  }
+    ?>
+    
     <!-- /.content -->
   </div>
  

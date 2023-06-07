@@ -30,6 +30,7 @@ include '../conf/koneksi.php'; ?>
 
     <!-- Main content -->
     <section class="content">
+      <div class ="box">
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
@@ -55,8 +56,8 @@ include '../conf/koneksi.php'; ?>
                     <th>No</th>
                     <th>Pemberi</th>
                     <th>Penerima</th>
-                    <th>Saldo</th>
                     <th>Rincian</th>
+                    <th>Saldo</th>
                     <th>Tgl Diterima</th>
                     <th>action</th>
                   </tr>
@@ -66,7 +67,7 @@ include '../conf/koneksi.php'; ?>
                   include "../conf/koneksi.php";
                     $no = 0;
                     
-                    $admin = mysqli_query($koneksi,"SELECT * FROM kas_masuk");
+                    $admin = mysqli_query($koneksi,"SELECT * FROM kas where jenis='masuk'");
                     while($m=mysqli_fetch_array($admin)){
                       $no++;
                       ?>
@@ -76,71 +77,24 @@ include '../conf/koneksi.php'; ?>
                   <td><?php echo $no; ?></td>
                     <td><?php echo $m['pemberi']; ?></td>
                     <td><?php echo $m['penerima']; ?></td>
-                    <td><?php echo $m['jumlah']; ?></td>
                     <td><?php echo $m['rincian']; ?></td>
-                    <th><?php echo $m['tgl'] ?></th>
+                    <td style="text-align: right;">Rp.<?php echo number_format($m['jumlah']).",-"; ?>
+                         </td>
+                         <td><?php echo date('d F Y', strtotime($m['tgl'])); ?></td>
+                    
                     <th>
-                      <a href ="hapus/hapuskasmasuk.php?id=<?php  echo $m['id']?>" class="btn btn-sm btn-danger">Hapus</a> 
-                      <a  class="btn btn-sm btn-warning" href ="editkasmasuk.php?id=<?php  echo $m['id']?>">Edit</a> 
-                      <!-- <button   type="button" class="btn btn-warning" >
-                         Edit
-                    </button> -->
-                            <div class="modal fade" id="modal-ed">
-                              <div class="modal-dialog modal-ed">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <h4 class="modal-title">EDIT KAS MASUK</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span>
-                                    </button>
-                                  </div>
-
-                                  <form method ="POST" action = "edit/editkasmasuk.php">
-                                  <div class="modal-body">
-                                    <div class="form-row">
-                                    <!-- <div class="col"> -->
-                                        <input type="text" class="form-control" placeholder="penerima" value="<?php echo $m['penerima']; ?>">
-                                      </div>
-                                      <div class="col">
-                                        <input type="text" class="form-control" placeholder="pemberi" name ="editpemberi" value="<?php echo $m['pemberi']; ?>">
-                                      </div>
-                                      <div class="col">
-                                        <input type="text" class="form-control" placeholder="Saldo" name = "editjumlah" value="<?php echo $m['jumlah']; ?>"> 
-                                      </div>
-                                      <div class="col">
-                                        <input type="text" class="form-control" placeholder="rincian" name = "editrincian" value="<?php echo $m['rincian']; ?>"> 
-                                      </div>
-                                      <div class="col">
-                                        <input type="date" class="form-control" placeholder="tanggal masuk" name="edittanggal" value="<?php echo $m['tanggal']; ?>">
-                                      </div>
-                                  <div class="modal-footer justify-content-between">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary" >Save changes</button>
-                                  </div>
-                                </div>
-                                
-                                          </form>
-                                          <?php 
-                                          // if (isset($_POST['update'])){
-                                          //   $penerima =  $_POST['editpenerima'];
-                                          //   $pemberi =  $_POST['eidtpemberi'];
-                                          //   $jumlah =  $_POST['editjumlah'];
-                                          //   $rincian = $_POST['editrincian'];
-                                          //   $tanggal = $_POST['edittanggal'];
-                                          //   $sql = "UPDATE kas_masuk SET penerima='$penerima', pemberi='$pemberi', jumlah='$jumlah',rincian='$rincian', tanggal ='$tanggal'";
-                                          // }
-                                          
-                                          ?>
-                                <!-- /.modal-content -->
-                              </div>
-                              <!-- /.modal-dialog -->
-                            </div>
+                      <a onclick="return confirm('Apakah anda yakin ingin menghapus data?')" href ="hapus/hapuskasmasuk.php?id=<?php  echo $m['id']?>" class="btn btn-sm btn-danger"><i class="fa fa-trash"> </i></a> 
+                      <a  class="btn btn-sm btn-warning" href ="editkasmasuk.php?id=<?php  echo $m['id']?>"> <i class="fa fa-pen"></i></a> 
                     </th>
                   </tr>
-                      <?php } ?>
                   </tbody>
+                  <?php 
+                         ini_set("display_errors","Off");
+                         $total = $total+$m['jumlah'];
+                         } 
+                        ?>
                   <tfoot>
-                  <tr>
+                  <!-- <tr>
                     <th>No</th>
                     <th>Pemberi</th>
                     <th>Penerima</th>
@@ -148,8 +102,12 @@ include '../conf/koneksi.php'; ?>
                     <th>Rincian</th>
                     <th>Tgl Diterima</th>
                     <th>action</th>
-                  </tr>               
+                  </tr>                -->
                   </tfoot>
+                  <tr>
+                      <td colspan="4" style="text-align: left; font-size: 17px; color: maroon;">Total Kas Masuk :</td>
+                       <td style="font-size: 17px; text-align: right; "><font style="color: green;"><?php echo " Rp." . number_format($total).",-"; ?></font></td>
+                     </tr>
                 </table>
               </div>
               </div>

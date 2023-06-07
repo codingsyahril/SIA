@@ -57,45 +57,13 @@
                 </a>
               </li>
               <li class="nav-item">
-                <!-- <a href="./index3.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v3</p> -->
-                </a>
-              </li>
-            </ul>
-            <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-edit"></i>
-              <p>
-                Forms
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="kas_masuk.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Kas Masuk</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="kas_keluar.php" class="nav-link">
+                <a href="kas_keluar.php?page=kas-keluar" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Kas Keluar</p>
                 </a>
               </li>
-              <!-- <li class="nav-item">
-                <a href="pages/forms/editors.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Editors</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/forms/validation.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Validation</p>
-                </a>
-              </li> -->
+            </ul>
+
             </ul>
           </li>
           </li>
