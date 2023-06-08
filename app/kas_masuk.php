@@ -1,115 +1,77 @@
-<?php 
-include "header.php";
-include '../conf/koneksi.php'; ?>
-
-
-     
-  
-      
-      <?php 
-      include "sidebar.php";
-      ?> 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>KAS MASUK</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">KAS MASUK</li>
-            </ol>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
+<?php include('../conf/koneksi.php'); ?>
 
     <!-- Main content -->
     <section class="content">
-      <div class ="box">
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
-           
-            <!-- /.card -->
             
+            <!-- /.card -->
+
             <div class="card">
               <div class="card-header">
                 <!-- <h3 class="card-title">DataTable with default features</h3> -->
-              
-              
-              <!-- /.card-header -->
-              
-              <div class="card-body">
-              <table id="example1" class="table table-bordered table-striped">
-              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-lg">
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-lg"><li class="fa fa-plus"></li>
                   Tambah Data 
                 </button>
-                <br></br>
-                
+
+
+
+
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
                     <th>No</th>
                     <th>Pemberi</th>
                     <th>Penerima</th>
                     <th>Rincian</th>
-                    <th>Saldo</th>
-                    <th>Tgl Diterima</th>
-                    <th>action</th>
+                    <th>Saldo Masuk</th>
+                    <th>Tanggal</th>
+                    <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
                   <?php 
-                  include "../conf/koneksi.php";
-                    $no = 0;
-                    
-                    $admin = mysqli_query($koneksi,"SELECT * FROM kas where jenis='masuk'");
-                    while($m=mysqli_fetch_array($admin)){
-                      $no++;
-                      ?>
-    
-                    
-                 <tr>
-                  <td><?php echo $no; ?></td>
+                  $no=0;
+                  $query = mysqli_query($koneksi, "SELECT * FROM kas WHERE jenis='masuk'");
+                  while($m = mysqli_fetch_array($query)){
+                    $no++;
+                  ?>
+                  
+                  <tr>
+                    <td><?php echo $no ?></td>
                     <td><?php echo $m['pemberi']; ?></td>
                     <td><?php echo $m['penerima']; ?></td>
                     <td><?php echo $m['rincian']; ?></td>
-                    <td style="text-align: right;">Rp.<?php echo number_format($m['jumlah']).",-"; ?>
-                         </td>
-                         <td><?php echo date('d F Y', strtotime($m['tgl'])); ?></td>
-                    
-                    <th>
+                    <td  style="text-align: right;">Rp.<?php echo number_format($m['jumlah']).",-"; ?></td>
+                    <td><?php echo date('d F Y', strtotime($m['tgl'])); ?></td>
+                    <td>
                       <a onclick="return confirm('Apakah anda yakin ingin menghapus data?')" href ="hapus/hapuskasmasuk.php?id=<?php  echo $m['id']?>" class="btn btn-sm btn-danger"><i class="fa fa-trash"> </i></a> 
-                      <a  class="btn btn-sm btn-warning" href ="editkasmasuk.php?id=<?php  echo $m['id']?>"> <i class="fa fa-pen"></i></a> 
-                    </th>
+                      <a  class="btn btn-sm btn-warning" href ="index.php?page=edit-masuk&&id=<?php  echo $m['id']?>"> <i class="fa fa-pen"></i></a> 
+                    </td>
                   </tr>
+                  <?php ini_set("display_errors","Off");
+                         $total = $total+$m['jumlah'];} ?>
                   </tbody>
-                  <?php 
-                         ini_set("display_errors","Off");
-                         $total = $total+$m['jumlah'];
-                         } 
-                        ?>
                   <tfoot>
-                  <!-- <tr>
-                    <th>No</th>
+                  <tr>
+                  <th>No</th>
                     <th>Pemberi</th>
                     <th>Penerima</th>
-                    <th>Saldo</th>
                     <th>Rincian</th>
-                    <th>Tgl Diterima</th>
-                    <th>action</th>
-                  </tr>                -->
+                    <th>Saldo Masuk</th>
+                    <th>Tanggal</th>
+                    <th>Action</th>
+                  </tr>
                   </tfoot>
-                  <tr>
-                      <td colspan="4" style="text-align: left; font-size: 17px; color: maroon;">Total Kas Masuk :</td>
-                       <td style="font-size: 17px; text-align: right; "><font style="color: green;"><?php echo " Rp." . number_format($total).",-"; ?></font></td>
-                     </tr>
                 </table>
-              </div>
+                <tr>
+                      <td colspan="12" style="text-align: center; font-size: 42px; color: maroon;">Total Kas Masuk :</td>
+                       <td style="font-size: 42px; text-align: right; "><font style="color: green;"><?php echo " Rp." . number_format($total).",-"; ?></font></td>
+                     </tr>
               </div>
               <!-- /.card-body -->
             </div>
@@ -120,59 +82,48 @@ include '../conf/koneksi.php'; ?>
         <!-- /.row -->
       </div>
       <!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-  <?php 
-  include "footer.php"
-  ?> 
-
- <!-- Modal Tambah Data  -->
-</body>
-
-<div class="modal fade" id="modal-lg">
-
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">TAMBAH KAS MASUK</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <form method = "POST" action = "add/tambahkasmasuk.php">
-            <div class="modal-body">
-              <div class="form-row">
-                <div class="col">
-                  <input type="text" class="form-control" placeholder="penerima" name="penerima">
-                </div>
-                <div class="col">
-                  <input type="text" class="form-control" placeholder="pemberi" name ="pemberi">
-                </div>
-                <div class="col">
-                  <input type="text" class="form-control" placeholder="Saldo" name = "jumlah"> 
-                </div>
-                <div class="col">
-                  <input type="text" class="form-control" placeholder="rincian" name = "rincian"> 
-                </div>
-                <div class="col">
-                  <input type="date" class="form-control" placeholder="tanggal masuk" name="tanggal">
-                </div>
-                <!-- <div class="col">
-                  <input type="text" class="form-control" placeholder="Last name">
-                </div> -->
-              </div>
-            </div>
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Save changes</button>
-            </div>
-          </div>
-          
-          </form>
-          <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-      </div>
-</html>
+    </section>  
+    
+    <div class="modal fade" id="modal-lg">
+                          <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h4 class="modal-title">TAMBAH KAS MASUK</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <form method = "POST" action = "add/tambah_masuk.php">
+                              <div class="modal-body">
+                                <div class="form-row">
+                                  <div class="col">
+                                    <input type="text" class="form-control" placeholder="penerima" name="penerima">
+                                  </div>
+                                  <div class="col">
+                                    <input type="text" class="form-control" placeholder="pemberi" name ="pemberi">
+                                  </div>
+                                  <div class="col">
+                                    <input type="text" class="form-control" placeholder="Saldo" name = "jumlah"> 
+                                  </div>
+                                  <div class="col">
+                                    <input type="text" class="form-control" placeholder="rincian" name = "rincian"> 
+                                  </div>
+                                  <div class="col">
+                                    <input type="date" class="form-control" placeholder="tanggal masuk" name="tanggal">
+                                  </div>
+                                  <!-- <div class="col">
+                                    <input type="text" class="form-control" placeholder="Last name">
+                                  </div> -->
+                                </div>
+                              </div>
+                              <div class="modal-footer justify-content-between">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn bg-purple">Save changes</button>
+                              </div>
+                            </div>
+                            
+                            </form>
+                            <!-- /.modal-content -->
+                          </div>
+                          <!-- /.modal-dialog -->
+                        </div>

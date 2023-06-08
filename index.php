@@ -15,15 +15,6 @@
   <link rel="stylesheet" href="app/dist/css/adminlte.min.css">
 </head>
 
-<?php 
-      $x = isset($_GET['error']);
-      if($x==1){
-        echo "<script> alert('Login Gagal')</script>";
-      }else {
-        echo '';
-      }
-      
-      ?>
 <body class="hold-transition login-page">
 <div class="login-box">
   <!-- /.login-logo -->
@@ -99,5 +90,27 @@
 <script src="app/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="app/dist/js/adminlte.min.js"></script>
+<!-- SweetAlert2 -->
+<script src="app/plugins/sweetalert2/sweetalert2.min.js"></script>
 </body>
+
+<?php 
+      $x = isset($_GET['error']);
+      if($x==1){
+        echo "
+        <script>
+        Toast.fire({
+          icon: 'warning',
+          title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+        });
+        Toast.fire({
+          icon: 'warning',
+          title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+        })
+        </script>";
+      }else {
+        echo '';
+      }
+      
+      ?>
 </html>

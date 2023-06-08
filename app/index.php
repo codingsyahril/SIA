@@ -1,71 +1,61 @@
-<?php
-include "../conf/koneksi.php";
-include "header.php";?> 
+<!DOCTYPE html>
+<html lang="en">
+<?php 
+session_start();
+include('header.php');?>
+<?php include('../conf/koneksi.php'); ?>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
 
-      
-  <?php 
-  include "sidebar.php";
-  
-  ?>
+  <!-- Preloader -->
+  <?php include('preloader.php'); ?>
+
+  <!-- Navbar -->
+  <?php include('navbar.php');?>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+   
+
+    <!-- Sidebar -->  
+    <?php include ('sidebar.php'); ?>
+    <!-- /.sidebar -->
+  </aside>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0">Dashboard</h1>
-          </div>
-          <!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard</li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
+  <?php include('content_header.php'); ?>
     <!-- /.content-header -->
 
     <!-- Main content -->
-
     <?php 
-    if(isset($_GET['page'])){
-      if($_GET['page']=='dashboard'){
-      include "dashboard.php";
-    } elseif($_GET['page']=='kas-masuk'){
-      include "kas_masuk.php";
-    }elseif($_GET['page']=='editkasmasuk'){
-      include "editkasmasuk.php";
-    }else{
-      
+    if (isset($_GET['page'])){
+    if ($_GET['page']=='dashboard'){
+    include('dashboard.php'); 
+    }else if ($_GET['page']=='kas-masuk'){
+      include('kas_masuk.php');
+    }else if ($_GET['page']=='edit-masuk'){
+      include('edit/edit_kasmasuk.php');
+    }else if($_GET['page']=='kas-keluar') {
+      include('kas_keluar.php');
+    }else if ($_GET['page']=='edit-keluar'){
+      include('edit/edit_kaskeluar.php');
+    }else if ($_GET['page']=='rekap'){
+      include('rekap.php');
     }
-  }
-    ?>
-
-<?php 
-    if(isset($_GET['page'])){
-      if($_GET['page']=='dashboard'){
-      // include "dashboard.php";
-    } elseif($_GET['page']=='kas-keluar'){
-      include "kas_masuk.php";
-    }elseif($_GET['page']=='editkaskeluar'){
-      include "editkaskeluar.php";
-    }else{
-      
+    else {
+      include('dashboard.php');
     }
-  }
-    ?>
-    
-    <!-- /.content -->
+  }else {
+    include('dashboard.php');
+  }?>
+      <!-- /.content -->
   </div>
  
-<?php 
-include "footer.php";
 
-?>
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
@@ -73,7 +63,6 @@ include "footer.php";
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-
-
+<?php include('footer.php'); ?>
 </body>
 </html>
