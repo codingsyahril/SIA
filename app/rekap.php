@@ -58,14 +58,15 @@
                          $total_keluar = $total_keluar+$m['keluar'];
                          $saldo_akhir = $total_masuk - $total_keluar; 
                          } ?>
-                          <tr>
-                      <td colspan="7" style="text-align: left; font-size: 16px; color: maroon;">Total Kas Keluar :</td>
-                       <td style="font-size: 16px; text-align: right; "><font style="color: red;"><?php echo " Rp." . number_format($total_keluar).",-"; ?></font></td>
-                     </tr>
+                         
                   <tr>
                       <td colspan="7" style="text-align: left; font-size: 16px; color: maroon;">Total Kas Masuk :</td>
                        <td style="font-size: 16px; text-align: right; "><font style="color: green;"><?php echo " Rp." . number_format($total_masuk).",-"; ?></font></td>
                 </tr>
+                 <tr>
+                      <td colspan="7" style="text-align: left; font-size: 16px; color: maroon;">Total Kas Keluar :</td>
+                       <td style="font-size: 16px; text-align: right; "><font style="color: red;"><?php echo " Rp." . number_format($total_keluar).",-"; ?></font></td>
+                     </tr>
                
                      <tr>
                       <td colspan="7" style="text-align: left; font-size: 16px; color: maroon;">Saldo Akhir:</td>
